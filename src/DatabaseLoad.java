@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class DatabaseLoad {
 
+    private ArrayList[] returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
+
         // JDBC driver name and database URL
         static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         static final String DB_URL = "jdbc:mysql://localhost:3306/cinema";
@@ -34,61 +36,69 @@ public class DatabaseLoad {
             stmt = conn.createStatement();
             String sql;
             String values = "";
-            int count = 0;
-            for(String value : columns) {
-                if(count < columns.length) {
-                    values = values + value + ", ";
+
+            for(int count = 0; count < columns.length ; count++) {
+                if(count < columns.length-1) {
+                    values = values + columns[count] + ", ";
                 }
-                values = values + value;
-                count++;
+                else {
+                    values = values + columns[count];
+                }
             }
-            values = "Name, PhoneNumber";
+            //values = "Name, PhoneNumber";
             System.out.print(values);
             sql = "SELECT " + values + " FROM " + table;
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
-            ArrayList[] result = new ArrayList[4];
-            while(rs.next()){
-                ArrayList<ArrayList> allValues;
+            //while(rs.next()) {
                 switch (table) {
                     case "person":
-                        String name = rs.getString("Name");
-                        String phone = rs.getString("PhoneNumber");
-                        result[0].add(name);
-                        result[1].add(phone);
+                        while(rs.next()) {
+                            String name = rs.getString("Name");
+                            String phone = rs.getString("PhoneNumber");
+                            returnResult[0].add(name);
+                            returnResult[1].add(phone);
+                        }
                         break;
                     case "reservations":
-                        int personID = rs.getInt("PersonID");
-                        int showID = rs.getInt("ShowID");
-                        String row = rs.getString("Row");
-                        String seat= rs.getString("Seat");
-                        result[0].add(personID);
-                        result[1].add(showID);
-                        result[2].add(row);
-                        result[3].add(seat);
-                        break;
+                        while(rs.next()) {
+
+                            int personID = rs.getInt("PersonID");
+                            int showID = rs.getInt("ShowID");
+                            String row = rs.getString("Row");
+                            String seat = rs.getString("Seat");
+                            returnResult[0].add(personID);
+                            returnResult[1].add(showID);
+                            returnResult[2].add(row);
+                            returnResult[3].add(seat);
+                            break;
+                        }
                     case "shows":
-                        String showTitle = rs.getString("ShowTitle");
-                        int showDate = rs.getInt("ShowDate");
-                        int showTime = rs.getInt("ShowTime");
-                        result[0].add(showTitle);
-                        result[1].add(showDate);
-                        result[2].add(showTime);
-                        break;
+                        while(rs.next()) {
+
+                            String showTitle = rs.getString("ShowTitle");
+                            int showDate = rs.getInt("ShowDate");
+                            int showTime = rs.getInt("ShowTime");
+                            returnResult[0].add(showTitle);
+                            returnResult[1].add(showDate);
+                            returnResult[2].add(showTime);
+                            break;
+                        }
                     case "theater":
-                        int theaterNumber = rs.getInt("Theater");
-                        int theaterRow = rs.getInt("Row");
-                        int theaterSeat = rs.getInt("Seat");
-                        result[0].add(theaterNumber);
-                        result[1].add(theaterRow);
-                        result[2].add(theaterSeat);
-                        break;
+                        while(rs.next()) {
+
+                            int theaterNumber = rs.getInt("Theater");
+                            int theaterRow = rs.getInt("Row");
+                            int theaterSeat = rs.getInt("Seat");
+                            returnResult[0].add(theaterNumber);
+                            returnResult[1].add(theaterRow);
+                            returnResult[2].add(theaterSeat);
+                            break;
+                        }
                 }
 
-            return result;
 
-            }
             //STEP 6: Clean-up environment
             rs.close();
             stmt.close();
@@ -115,6 +125,6 @@ public class DatabaseLoad {
         }//end try
         System.out.println("Goodbye!");
 
-        return new ArrayList[1];
+        return returnResult;
     }
 }

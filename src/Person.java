@@ -66,7 +66,8 @@ public class Person {
     public static void main(String[] args) {
         DatabaseLoad database = new DatabaseLoad();
         ArrayList[] personData;
-        personData = database.getFromDatabase(new String[] {"Name", "PhoneNumber"}, "Person");
+        personData = database.getFromDatabase(new String[] {"Name", "PhoneNumber"}, "person");
+        System.out.println(personData[0].get(1));
 
         //Person person = new Person("Bent", "200");
         //int[] testArray = new int[]{1, 2, 3};
