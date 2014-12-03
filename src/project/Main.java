@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 /**
- * Created by Rasmus on 01-12-2014.
+ * Created by Maria on 02-12-2014.
  */
 public class Main extends Application {
 
@@ -29,27 +29,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        showTodoView(primaryStage);
+        showBiografView(primaryStage);
     }
 
-    public void showTodoView(Stage stage) {
-
+    public void showBiografView(Stage stage){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/todo.fxml"));
-            Parent toDoView = loader.load();
-            stage.setTitle("Todo");
-            stage.setScene(new Scene(toDoView, 300, 275));
-
-            TodoController controller = loader.getController();
-            controller.setData(todoData);
+            loader.setLocation(getClass().getResource("view/biograf.fxml"));
+            Parent biografView = loader.load();
+            stage.setTitle("Biograf");
+            stage.setScene(new Scene(biografView, 700, 500));
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        catch(IOException e){
+            e.printStackTrace(); //show dialog
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         launch(args);
     }
 }
