@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar layoutY="-2.0" minHeight="-Infinity" minWidth="700.0" prefWidth="700.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Forestillinger">
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reservation">
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ændr reservation">
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ChoiceBox layoutX="275.0" layoutY="131.0" prefWidth="150.0" />
+        <ChoiceBox layoutX="275.0" layoutY="231.0" prefWidth="150.0" />
+        <ChoiceBox layoutX="275.0" layoutY="331.0" prefWidth="150.0" />
+    </children>
+</Pane>
