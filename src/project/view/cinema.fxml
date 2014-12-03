@@ -23,9 +23,9 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ChoiceBox layoutX="275.0" layoutY="131.0" prefWidth="150.0" />
-        <ChoiceBox layoutX="275.0" layoutY="231.0" prefWidth="150.0" />
-        <ChoiceBox layoutX="275.0" layoutY="331.0" prefWidth="150.0" />
+        <ChoiceBox layoutX="275.0" layoutY="131.0" prefWidth="150.0"/>
+        <ChoiceBox layoutX="275.0" layoutY="231.0" prefWidth="150.0"/>
+        <ChoiceBox layoutX="275.0" layoutY="331.0" prefWidth="150.0"/>
       <Label layoutX="294.0" layoutY="103.0" prefHeight="21.0" prefWidth="113.0" text="Vælg forestilling:">
          <opaqueInsets>
             <Insets />
