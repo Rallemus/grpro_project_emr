@@ -80,8 +80,8 @@ public class DatabaseLoad {
                         while(rs.next()) {
 
                             String showTitle = rs.getString("ShowTitle");
-                            int showDate = rs.getInt("ShowDate");
-                            int showTime = rs.getInt("ShowTime");
+                            Date showDate = rs.getDate("ShowDate");
+                            Time showTime = rs.getTime("ShowTime");
                             returnResult[0].add(showTitle);
                             returnResult[1].add(showDate);
                             returnResult[2].add(showTime);
