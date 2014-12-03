@@ -1,6 +1,4 @@
-package projekt.model;
-import java.sql.*;
-import java.math.*;
+package project.model;
 
 /**
  * Created by Maria on 02-12-2014.

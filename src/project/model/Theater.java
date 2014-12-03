@@ -1,4 +1,4 @@
-package projekt.model;
+package project.model;
 
 /**
  * Created by Elise on 27-11-2014.

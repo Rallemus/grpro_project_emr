@@ -1,13 +1,12 @@
-package projekt.controller;
+package project.controller;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import projekt.model.Todo;
+import project.model.Todo;
 import java.time.LocalDate;
-import java.util.Observable;
 
 /**
  * Created by Rasmus on 01-12-2014.

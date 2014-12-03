@@ -1,6 +1,6 @@
-package projekt.model;
+package project.model;
 
-import projekt.DatabaseLoad;
+import project.DatabaseLoad;
 
 /**
  * Created by Rasmus on 03-12-2014.

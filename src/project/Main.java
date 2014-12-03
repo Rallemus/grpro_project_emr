@@ -1,4 +1,4 @@
-package projekt;
+package project;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import projekt.controller.TodoController;
-import projekt.model.Todo;
+import project.controller.TodoController;
+import project.model.Todo;
 
 import java.io.IOException;
 import java.time.LocalDate;

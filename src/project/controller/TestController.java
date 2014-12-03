@@ -1,6 +1,4 @@
-package projekt.controller;
-
-import javafx.fxml.FXML;
+package project.controller;
 
 /**
  * Created by Maria on 02-12-2014.
