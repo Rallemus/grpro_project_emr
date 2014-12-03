@@ -7,5 +7,9 @@ import project.DatabaseLoad;
  */
 public class Reservation {
 
-    private DatabaseLoad foo = new DatabaseLoad();
+    private DatabaseLoad database = new DatabaseLoad();
+
+    Reservation () {
+
+    }
 }

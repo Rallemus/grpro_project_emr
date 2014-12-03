@@ -17,20 +17,20 @@ public class Cinema {
     private String date;
     private String time;
     private DatabaseLoad database = new DatabaseLoad();
+/*
 
-
- /*   public Cinema(String shows1, String date, String time){
+    public Cinema(String shows1, String date, String time){
         this.shows1 = shows1;
         this.date = date;
         this.time = time;
     }
-*/
+
     public static void main(String[] args) {
- /*       Cinema cinema = new Cinema(shows, date, time);
+        Cinema cinema = new Cinema(shows, date, time);
         cinema.getShow();
         cinema.getDate();
         cinema.getTime();
- */
+
         Cinema cinema = new Cinema();
         cinema.getShow();
     }
@@ -56,4 +56,5 @@ public class Cinema {
         showlist3.setAll(data[0]);
         System.out.println(showlist3.get(0));
     }
+  */
 }
