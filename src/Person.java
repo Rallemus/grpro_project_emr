@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Maria on 25-11-2014.
  */
@@ -43,7 +45,6 @@ public class Person {
         name = newName;
     }
 
-
     /**
      * Changes the number of the person from the old one to a new one the client enters.
      * @param newNumber
@@ -61,9 +62,14 @@ public class Person {
         return count;
     }
 
+    // this main method is a temporary (crude) test of the DatabaseLoad class
     public static void main(String[] args) {
+        DatabaseLoad database = new DatabaseLoad();
+        ArrayList[] personData;
+        personData = database.getFromDatabase(new String[] {"Name", "PhoneNumber"}, "Person");
+
         //Person person = new Person("Bent", "200");
-        int[] testArray = new int[]{1, 2, 3};
-        System.out.println(testArray[1]);
+        //int[] testArray = new int[]{1, 2, 3};
+        //System.out.println(testArray[1]);
     }
 }
