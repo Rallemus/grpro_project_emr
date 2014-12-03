@@ -19,34 +19,41 @@ public class Cinema {
     private DatabaseLoad database = new DatabaseLoad();
 
 
-    public Cinema(String shows1, String date, String time){
+ /*   public Cinema(String shows1, String date, String time){
         this.shows1 = shows1;
         this.date = date;
         this.time = time;
     }
-
+*/
     public static void main(String[] args) {
-        Cinema cinema = new Cinema(shows, date, time);
+ /*       Cinema cinema = new Cinema(shows, date, time);
         cinema.getShow();
         cinema.getDate();
         cinema.getTime();
+ */
+        Cinema cinema = new Cinema();
+        cinema.getShow();
     }
 
-    public void getShow() throws UnsupportedEncodingException {
-        ObservableList<String> showlist = FXCollections.observableArrayList();
-        final ChoiceBox<String> chooser = new ChoiceBox<>(showlist);
-        chooser.getSelectionModel().select(0);
+    public void getShow() {
+        ObservableList<String> showlist1 = FXCollections.observableArrayList();
+        ArrayList[] data = database.getFromDatabase(new String[]{"ShowTitle"}, "shows");
+        showlist1.setAll(data[0]);
+        System.out.println(showlist1.get(0));
     }
 
 
-    public ObservableList<String> getDate()  {
-        ObservableList<String> data = new FXCollections.observableArrayList();
-        data.addAll(database.getFromDatabase(ShowDate, shows));
+    public void getDate() {
+        ObservableList<String> showlist2 = FXCollections.observableArrayList();
+        ArrayList[] data = database.getFromDatabase(new String[]{"ShowDate"}, "shows");
+        showlist2.setAll(data[0]);
+        System.out.println(showlist2.get(0));
     }
 
-    public ObservableList<String> getTime()  {
-        ObservableList<String> data = new FXCollections.observableArrayList();
-        data.addAll(database.getFromDatabase(ShowTime, shows));
+    public void getTime() {
+        ObservableList<String> showlist3 = FXCollections.observableArrayList();
+        ArrayList[] data = database.getFromDatabase(new String[]{"ShowTime"}, "shows");
+        showlist3.setAll(data[0]);
+        System.out.println(showlist3.get(0));
     }
-    
 }

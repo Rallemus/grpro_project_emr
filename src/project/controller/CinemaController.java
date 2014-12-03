@@ -33,8 +33,8 @@ public class CinemaController {
     @FXML
     public void initialize(){
         /**/
-        boxShows.setItems(getShow());
+     /*   boxShows.set;
         boxDate.setItems(getDate());
         boxTime.setItems(getTime());
-    }
+    */}
 }
