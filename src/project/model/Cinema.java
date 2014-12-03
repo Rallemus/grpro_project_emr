@@ -13,6 +13,8 @@ public class Cinema {
     private String shows;
     private String date;
     private String time;
+    private DatabaseLoad database = new DatabaseLoad();
+
 
     public Cinema(String shows, String date, String time){
         this.shows = time;
@@ -22,24 +24,23 @@ public class Cinema {
 
     public static void main(String[] args)
     {
-        DatabaseLoad database = new DatabaseLoad();
         Cinema cinema = new Cinema(shows, date, time);
         cinema.getShow();
         cinema.getDate();
         cinema.getTime();
     }
 
-    public static ObservableList<String> getShow()  {
+    public ObservableList<String> getShow()  {
         ObservableList<String> data = new FXCollections.observableArrayList();
         data.addAll(database.getFromDatabase(ShowTitle, shows));
     }
 
-    public static ObservableList<String> getDate()  {
+    public ObservableList<String> getDate()  {
         ObservableList<String> data = new FXCollections.observableArrayList();
         data.addAll(database.getFromDatabase(ShowDate, shows));
     }
 
-    public static ObservableList<String> getTime()  {
+    public ObservableList<String> getTime()  {
         ObservableList<String> data = new FXCollections.observableArrayList();
         data.addAll(database.getFromDatabase(ShowTime, shows));
     }

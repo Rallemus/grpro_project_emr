@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -26,5 +26,12 @@
         <ChoiceBox layoutX="275.0" layoutY="131.0" prefWidth="150.0" />
         <ChoiceBox layoutX="275.0" layoutY="231.0" prefWidth="150.0" />
         <ChoiceBox layoutX="275.0" layoutY="331.0" prefWidth="150.0" />
+      <Label layoutX="294.0" layoutY="103.0" prefHeight="21.0" prefWidth="113.0" text="Vælg forestilling:">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label layoutX="315.0" layoutY="204.0" text="Vælg dato:" />
+      <Label layoutX="299.0" layoutY="302.0" text="Vælg tidspunkt:" />
     </children>
 </Pane>
