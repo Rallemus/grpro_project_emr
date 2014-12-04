@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.CinemaController">
+    <children>
+        <MenuBar layoutY="-2.0" minHeight="-Infinity" minWidth="700.0" prefWidth="700.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Forestillinger">
+                </Menu>
+                <Menu mnemonicParsing="false" text="Reservation">
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ændr reservation">
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ChoiceBox fx:id="boxShows" layoutX="275.0" layoutY="131.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="boxDate" layoutX="275.0" layoutY="231.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="boxTime" layoutX="275.0" layoutY="331.0" prefWidth="150.0" />
+      <Label layoutX="294.0" layoutY="103.0" prefHeight="21.0" prefWidth="113.0" text="Vælg forestilling:">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label layoutX="315.0" layoutY="204.0" text="Vælg dato:" />
+      <Label layoutX="299.0" layoutY="302.0" text="Vælg tidspunkt:" />
+    </children>
+</Pane>

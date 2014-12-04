@@ -21,7 +21,7 @@ public class DatabaseLoad {
         static final String PASS = "123456";
 
 
-    public ArrayList[] getFromDatabase(String[] columns, String table) {
+    public ArrayList[] getFromDatabase(String table) {
         Connection conn = null;
         Statement stmt = null;
         try{
@@ -37,8 +37,8 @@ public class DatabaseLoad {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            String values = "";
 
+            /*
             for(int count = 0; count < columns.length ; count++) {
                 if(count < columns.length-1) {
                     values = values + columns[count] + ", ";
@@ -47,9 +47,9 @@ public class DatabaseLoad {
                     values = values + columns[count];
                 }
             }
-            //values = "Name, PhoneNumber";
-            System.out.print(values);
-            sql = "SELECT " + values + " FROM " + table;
+            */
+
+            sql = "SELECT * FROM " + table;
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
@@ -80,8 +80,8 @@ public class DatabaseLoad {
                         while(rs.next()) {
 
                             String showTitle = rs.getString("ShowTitle");
-                            int showDate = rs.getInt("ShowDate");
-                            int showTime = rs.getInt("ShowTime");
+                            Date showDate = rs.getDate("ShowDate");
+                            Time showTime = rs.getTime("ShowTime");
                             returnResult[0].add(showTitle);
                             returnResult[1].add(showDate);
                             returnResult[2].add(showTime);

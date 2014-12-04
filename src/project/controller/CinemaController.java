@@ -2,6 +2,7 @@ package project.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 
 import java.awt.*;
 import java.sql.Time;
@@ -32,6 +33,8 @@ public class CinemaController {
     @FXML
     public void initialize(){
         /**/
-        boxForestillinger.setItems()
-    }
+     /*   boxShows.set;
+        boxDate.setItems(getDate());
+        boxTime.setItems(getTime());
+    */}
 }
