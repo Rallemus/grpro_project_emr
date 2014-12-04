@@ -1,7 +1,7 @@
 package project.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.fxml.FXML;
+import project.DatabaseLoad;
 
 
 /**
@@ -12,7 +12,7 @@ public class Change {
     private StringProperty name = new SimpleStringProperty();
     private StringProperty phone = new SimpleStringProperty();
     private StringProperty shows = new SimpleStringProperty();
-
+    private DatabaseLoad database = new DatabaseLoad();
 
 
     public Change(String name, String phone, String shows) {

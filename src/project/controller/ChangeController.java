@@ -21,7 +21,7 @@ public class ChangeController {
     private TableColumn<Change, String> showsColumn;
 
     public ChangeController() {
-
+    //empty constructor
     }
 
     @FXML
@@ -31,16 +31,16 @@ public class ChangeController {
 
     @FXML
     public void searchButtonHandler() {
-        System.out.println("new button clicked");
+        System.out.println("search button clicked");
     }
 
     @FXML
     public void deleteButtonHandler() {
-        System.out.println("new button clicked");
+        System.out.println("delete button clicked");
     }
 
     @FXML
     public void changeButtonHandler() {
-        System.out.println("new button clicked");
+        System.out.println("change button clicked");
     }
 }
