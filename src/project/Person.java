@@ -68,11 +68,19 @@ public class Person {
     public static void main(String[] args) {
         DatabaseLoad database = new DatabaseLoad();
         ArrayList[] personData;
+
         personData = database.getFromDatabase("person");
+        System.out.println(personData[1].get(1));
+
+        personData = database.getFromDatabase("reservations");
         System.out.println(personData[0].get(1));
 
-        //Person person = new Person("Bent", "200");
-        //int[] testArray = new int[]{1, 2, 3};
-        //System.out.println(testArray[1]);
+        personData = database.getFromDatabase("shows");
+        System.out.println("Time:" + personData[2].get(1));
+        System.out.println("Date:" + personData[1].get(1));
+
+        personData = database.getFromDatabase("theater");
+        System.out.println(personData[0].get(1));
+
     }
 }

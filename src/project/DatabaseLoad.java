@@ -22,6 +22,7 @@ public class DatabaseLoad {
 
 
     public ArrayList[] getFromDatabase(String table) {
+        returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
         Connection conn = null;
         Statement stmt = null;
         try{
@@ -38,24 +39,13 @@ public class DatabaseLoad {
             stmt = conn.createStatement();
             String sql;
 
-            /*
-            for(int count = 0; count < columns.length ; count++) {
-                if(count < columns.length-1) {
-                    values = values + columns[count] + ", ";
-                }
-                else {
-                    values = values + columns[count];
-                }
-            }
-            */
-
             sql = "SELECT * FROM " + table;
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
             //while(rs.next()) {
                 switch (table) {
-                    case "person":
+                    case "person": {
                         while(rs.next()) {
                             String name = rs.getString("Name");
                             String phone = rs.getString("PhoneNumber");
@@ -63,9 +53,9 @@ public class DatabaseLoad {
                             returnResult[1].add(phone);
                         }
                         break;
-                    case "reservations":
-                        while(rs.next()) {
-
+                    }
+                    case "reservations": {
+                        while (rs.next()) {
                             int personID = rs.getInt("PersonID");
                             int showID = rs.getInt("ShowID");
                             String row = rs.getString("Row");
@@ -74,30 +64,31 @@ public class DatabaseLoad {
                             returnResult[1].add(showID);
                             returnResult[2].add(row);
                             returnResult[3].add(seat);
-                            break;
                         }
-                    case "shows":
-                        while(rs.next()) {
-
+                        break;
+                    }
+                    case "shows": {
+                        while (rs.next()) {
                             String showTitle = rs.getString("ShowTitle");
                             Date showDate = rs.getDate("ShowDate");
                             Time showTime = rs.getTime("ShowTime");
                             returnResult[0].add(showTitle);
                             returnResult[1].add(showDate);
                             returnResult[2].add(showTime);
-                            break;
                         }
-                    case "theater":
-                        while(rs.next()) {
-
+                        break;
+                    }
+                    case "theater": {
+                        while (rs.next()) {
                             int theaterNumber = rs.getInt("Theater");
                             int theaterRow = rs.getInt("Row");
                             int theaterSeat = rs.getInt("Seat");
                             returnResult[0].add(theaterNumber);
                             returnResult[1].add(theaterRow);
                             returnResult[2].add(theaterSeat);
-                            break;
                         }
+                        break;
+                    }
                 }
 
 
