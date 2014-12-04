@@ -33,7 +33,7 @@ public class Cinema {
 
     public ObservableList getShow() {
         ObservableList<String> showlist1 = FXCollections.observableArrayList();
-        ArrayList[] data = database.getFromDatabase("shows");
+        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows", "shows");
         showlist1.setAll(data[0]);
         System.out.println(showlist1.get(0));
         return showlist1;
@@ -50,7 +50,7 @@ public class Cinema {
 */
     public ObservableList getTime() {
         ObservableList<String> showlist3 = FXCollections.observableArrayList();
-        ArrayList[] data = database.getFromDatabase("shows");
+        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows", "shows");
         showlist3.setAll(data[2]);
         System.out.println(showlist3.get(0));
         return showlist3;
