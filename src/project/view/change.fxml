@@ -6,18 +6,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grpro_project_emr.change.controller.ChangeController">
    <children>
-      <TableView layoutX="7.0" layoutY="107.0" prefHeight="287.0" prefWidth="586.0">
+      <TableView fx:id="changeTable" layoutX="6.0" layoutY="70.0" prefHeight="324.0" prefWidth="587.0">
         <columns>
-          <TableColumn prefWidth="164.0" text="Navn" />
-          <TableColumn prefWidth="104.0" text="Tlf" />
-            <TableColumn prefWidth="207.0" text="Forestilling" />
-            <TableColumn prefWidth="124.0" text="Slet/Ændr" />
+          <TableColumn fx:id="nameColumn" prefWidth="164.0" text="Navn" />
+          <TableColumn fx:id="phoneColumn" prefWidth="116.0" text="Tlf" />
+            <TableColumn fx:id="showsColumn" prefWidth="178.0" text="Forestilling" />
+            <TableColumn prefWidth="128.0" text="Pladser" />
         </columns>
       </TableView>
-      <TextField layoutX="42.0" layoutY="74.0" />
-      <Text layoutX="14.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tlf.:" />
-      <Button layoutX="197.0" layoutY="74.0" mnemonicParsing="false" text="Søg" />
+      <TextField layoutX="40.0" layoutY="29.0" />
+      <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tlf.:" />
+      <Button layoutX="199.0" layoutY="29.0" mnemonicParsing="false" onAction="#searchButtonHandler" text="Søg" />
+      <Button layoutX="501.0" layoutY="29.0" mnemonicParsing="false" onAction="#deleteButtonHandler" text="Slet" />
+      <Button layoutX="548.0" layoutY="29.0" mnemonicParsing="false" onAction="#changeButtonHandler" text="Ændr" />
    </children>
 </Pane>

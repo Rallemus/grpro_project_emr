@@ -24,4 +24,23 @@ public class ChangeController {
 
     }
 
+    @FXML
+    public void initialize() {
+
+    }
+
+    @FXML
+    public void searchButtonHandler() {
+        System.out.println("new button clicked");
+    }
+
+    @FXML
+    public void deleteButtonHandler() {
+        System.out.println("new button clicked");
+    }
+
+    @FXML
+    public void changeButtonHandler() {
+        System.out.println("new button clicked");
+    }
 }
