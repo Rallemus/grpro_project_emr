@@ -28,16 +28,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        showBiografView(primaryStage);
+        showCinemaView(primaryStage);
     }
 
-    public void showBiografView(Stage stage){
+    public void showCinemaView(Stage stage){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/biograf.fxml"));
-            Parent biografView = loader.load();
+            loader.setLocation(getClass().getResource("view/cinema.fxml"));
+            Parent cinemaView = loader.load();
             stage.setTitle("Biograf");
-            stage.setScene(new Scene(biografView, 700, 500));
+            stage.setScene(new Scene(cinemaView, 700, 500));
             stage.show();
         }
         catch(IOException e){

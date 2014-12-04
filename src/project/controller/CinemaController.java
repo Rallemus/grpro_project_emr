@@ -1,4 +1,6 @@
 package project.controller;
+import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 import project.model.Cinema;
 
 import javafx.fxml.FXML;
@@ -31,12 +33,17 @@ public class CinemaController {
 
     }
 
+    /**
+     * This method fills out the choicebox made in JavaFX with data from the database by creating a new Cinema
+     * object, and calling its getShow method which is responsible for accessing data from the database.
+     */
     @FXML
     public void initialize(){
-
+     //   StringConverter sc = new NumberStringConverter();
+     //   boxShows.setConverter(sc);
         boxShows.setItems(new Cinema().getShow());
- //       boxDate.setItems(getDate());
- //       boxTime.setItems(getTime());
+        boxDate.setItems(new Cinema().getDate());
+        boxTime.setItems(new Cinema().getTime());
 
     }
 
