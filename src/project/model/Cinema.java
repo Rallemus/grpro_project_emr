@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
 import project.DatabaseLoad;
 
-
 import java.util.ArrayList;
 
 /**
@@ -19,7 +18,6 @@ public class Cinema {
     private ObservableList showTitle;
     private ObservableList showDate;
     private ObservableList showTime;
-
 
 
     /*    public Cinema(String shows1, String date, String time){
@@ -41,6 +39,7 @@ public class Cinema {
                                                                                 // in the choicebox.
         ArrayList[] data = database.getFromDatabase("SELECT * FROM shows","shows"); //fills an arraylist with data from database table "shows"
         showTitle.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
+        boolean showTitleFull = true;
         return showTitle;
     }
 
@@ -48,12 +47,10 @@ public class Cinema {
     public ObservableList getDate() {
         ObservableList<String> showDate = FXCollections.observableArrayList(); //creates list to hold data to show
                                                                                 // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows","shows"); //fills an arraylist with data from database table "shows"
-        showDate.setAll(data[1]);      //1 refers to the second column in the table "shows" which holds dates.
-        /*for(Date i : showDate) {
-            i = i.toString();
-        }*/
-        return showDate;
+            ArrayList[] data = database.getFromDatabase("SELECT * FROM shows", "shows");
+            //fills an arraylist with data from database table "shows"
+            showDate.setAll(data[1]);      //1 refers to the second column in the table "shows" which holds dates.
+            return showDate;
     }
 
     public ObservableList getTime() {
@@ -61,6 +58,7 @@ public class Cinema {
                                                                                 // in the choicebox.
         ArrayList[] data = database.getFromDatabase("SELECT * FROM shows","shows"); //fills an arraylist with data from database table "shows"
         showTime.setAll(data[2]); //2 refers to the third column in the table "shows" which holds times.
+        boolean showTimeFull = true;
         return showTime;
     }
 

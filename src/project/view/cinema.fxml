@@ -23,15 +23,15 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ChoiceBox fx:id="boxShows" layoutX="275.0" layoutY="131.0" prefWidth="150.0" />
-        <ChoiceBox fx:id="boxDate" layoutX="275.0" layoutY="231.0" prefWidth="150.0" />
-        <ChoiceBox fx:id="boxTime" layoutX="275.0" layoutY="331.0" prefWidth="150.0" />
       <Label layoutX="294.0" layoutY="103.0" prefHeight="21.0" prefWidth="113.0" text="Vælg forestilling:">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Label>
-      <Label layoutX="315.0" layoutY="204.0" text="Vælg dato:" />
-      <Label layoutX="299.0" layoutY="302.0" text="Vælg tidspunkt:" />
+      <Label layoutX="315.0" layoutY="203.0" text="Vælg dato:" />
+      <Label layoutX="299.0" layoutY="303.0" text="Vælg tidspunkt:" />
+      <ComboBox fx:id="boxShows" layoutX="275.0" layoutY="143.0" prefWidth="150.0" promptText="Forestilling" />
+      <ComboBox fx:id="boxDate" layoutX="275.0" layoutY="243.0" prefWidth="150.0" promptText="Dato" />
+      <ComboBox fx:id="boxTime" layoutX="275.0" layoutY="343.0" prefWidth="150.0" promptText="Tidspunkt" />
     </children>
 </Pane>

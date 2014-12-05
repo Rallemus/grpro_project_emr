@@ -1,13 +1,17 @@
 package project.controller;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionMode;
 import project.model.Cinema;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Time;
 import java.util.Date;
 
@@ -23,11 +27,11 @@ public class CinemaController {
     @FXML
     private MenuBar time;
     @FXML
-    private ChoiceBox<String> boxShows;
+    private ComboBox<String> boxShows;
     @FXML
-    private ChoiceBox<Date> boxDate;
+    private ComboBox<Date> boxDate;
     @FXML
-    private ChoiceBox<Time> boxTime;
+    private ComboBox<Time> boxTime;
 
     public CinemaController(){
 
@@ -39,12 +43,10 @@ public class CinemaController {
      */
     @FXML
     public void initialize(){
-     //   StringConverter sc = new NumberStringConverter();
-     //   boxShows.setConverter(sc);
         boxShows.setItems(new Cinema().getShow());
         boxDate.setItems(new Cinema().getDate());
         boxTime.setItems(new Cinema().getTime());
 
-    }
+        }
 
-}
+    }
