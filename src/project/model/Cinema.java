@@ -60,7 +60,6 @@ public class Cinema {
         else {
             WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'";
         }
-
         sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause;
 
         ArrayList[] data = database.getFromDb(sqlStatement, "showTitle");
