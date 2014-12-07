@@ -87,6 +87,27 @@ public class DatabaseLoad {
                         }
                         break;
                     }
+                    case "showTitle": {
+                        while (rs.next()) {
+                            String showTitle = rs.getString("ShowTitle");
+                            returnResult[0].add(showTitle);
+                        }
+                        break;
+                    }
+                    case "showDate": {
+                        while (rs.next()) {
+                            Date showDate = rs.getDate("ShowDate");
+                            returnResult[0].add(showDate);
+                        }
+                        break;
+                    }
+                    case "showTime": {
+                        while (rs.next()) {
+                            Time showTime = rs.getTime("ShowTime");
+                            returnResult[0].add(showTime);
+                        }
+                        break;
+                    }
                 }
 
 
@@ -118,4 +139,79 @@ public class DatabaseLoad {
 
         return returnResult;
     }
+    public ArrayList[] getFromDb(String sql, String table) {
+        returnResult = new ArrayList[] {new ArrayList()};
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName (JDBC_DRIVER);
+
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //STEP 5: Extract data from result set
+            //while(rs.next()) {
+            switch (table) {
+                case "showTitle": {
+                    while (rs.next()) {
+                        String showTitle = rs.getString("ShowTitle");
+                        returnResult[0].add(showTitle);
+                    }
+                    break;
+                }
+                case "showDate": {
+                    while (rs.next()) {
+                        Date showDate = rs.getDate("ShowDate");
+                        returnResult[0].add(showDate);
+                    }
+                    break;
+                }
+                case "showTime": {
+                    while (rs.next()) {
+                        Time showTime = rs.getTime("ShowTime");
+                        returnResult[0].add(showTime);
+                    }
+                    break;
+                }
+            }
+
+
+            //STEP 6: Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+        System.out.println("Goodbye!");
+
+        return returnResult;
+    }
+
 }
