@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class DatabaseLoad {
 
-    private ArrayList[] returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
+    private ArrayList[] returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
 
         // JDBC driver name and database URL
         static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -22,7 +22,7 @@ public class DatabaseLoad {
 
 
     public ArrayList[] getFromDatabase(String sql, String table) {
-        returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
+        returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
         Connection conn = null;
         Statement stmt = null;
         try{
@@ -54,14 +54,16 @@ public class DatabaseLoad {
                     }
                     case "reservations": {
                         while (rs.next()) {
+                            int reservationID = rs.getInt("ReservationID");
                             int personID = rs.getInt("PersonID");
                             int showID = rs.getInt("ShowID");
                             String row = rs.getString("Row");
                             String seat = rs.getString("Seat");
-                            returnResult[0].add(personID);
-                            returnResult[1].add(showID);
-                            returnResult[2].add(row);
-                            returnResult[3].add(seat);
+                            returnResult[0].add(reservationID);
+                            returnResult[1].add(personID);
+                            returnResult[2].add(showID);
+                            returnResult[3].add(row);
+                            returnResult[4].add(seat);
                         }
                         break;
                     }

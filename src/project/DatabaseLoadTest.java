@@ -23,7 +23,7 @@ public class DatabaseLoadTest {
         data = database.getFromDatabase("SELECT * FROM reservations", "reservations");
         int showID = (int) data[1].get(1);
         System.out.println(showID);
-        assertEquals(showID, 2);
+        assertEquals(showID, 3);
 
 
         data = database.getFromDatabase("SELECT * FROM shows", "shows");
