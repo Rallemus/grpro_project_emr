@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import project.model.Todo;
 import javafx.application.Application;
@@ -34,11 +35,6 @@ import java.time.LocalDate;
  */
 public class MainGridTest extends Application {
 
-    private final Paint background = RadialGradientBuilder.create()
-    .stops(new Stop(0d, Color.TURQUOISE), new Stop(1, Color.web("3A5998")))
-    .centerX(0.5d).centerY(0.5d).build();
-
-
     @Override
     public void start(Stage primaryStage) {
     GridPane seatsGrid = new GridPane();
@@ -46,15 +42,6 @@ public class MainGridTest extends Application {
         seatsGrid.setHgap(15);
         seatsGrid.setVgap(15);
         seatsGrid.setAlignment(Pos.CENTER);
-        final TextField text = new TextField();
-        text.setPrefWidth(250);
-        text.setPrefHeight(50);
-        text.setPromptText("Press the buttons to Display text here");
-        text.setFocusTraversable(false);
-        seatsGrid.setColumnSpan(text, 7);
-        seatsGrid.setRowSpan(text, 2);
-        seatsGrid.add(text, 0, 0);
-        seatsGrid.setHalignment(text, HPos.CENTER);
 
         final Seat[][] seat = new Seat[5][5];
         int seatsPerRow = seat[0].length;
@@ -106,12 +93,11 @@ public class MainGridTest extends Application {
                     selectedSeat.setStyle("-fx-background-color: dodgerblue;");
                     seat[finalI][finalJ+1].setStyle("-fx-background-color: dodgerblue;");
                     seat[finalI][finalJ+2].setStyle("-fx-background-color: dodgerblue;");
-                    text.setText(selectedSeat.getText() + " was clicked.");
                 });
             }
         }
 
-        Scene scene = new Scene(seatsGrid,background);
+        Scene scene = new Scene(seatsGrid);
         primaryStage.setTitle("Grid Pane Example");
         primaryStage.setScene(scene);
         primaryStage.show();

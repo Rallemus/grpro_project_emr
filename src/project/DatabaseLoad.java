@@ -70,9 +70,11 @@ public class DatabaseLoad {
                             String showTitle = rs.getString("ShowTitle");
                             Date showDate = rs.getDate("ShowDate");
                             Time showTime = rs.getTime("ShowTime");
+                            int theaterNumber = rs.getInt("TheaterNumber");
                             returnResult[0].add(showTitle);
                             returnResult[1].add(showDate);
                             returnResult[2].add(showTime);
+                            returnResult[3].add(theaterNumber);
                         }
                         break;
                     }

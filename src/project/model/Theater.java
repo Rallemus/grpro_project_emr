@@ -4,7 +4,7 @@ package project.model;
  * Created by Elise on 27-11-2014.
  */
 public class Theater {
-    private int  seats;
+    private int seats;
     private int rows;
     private int total_seats;
     private int available_seats;

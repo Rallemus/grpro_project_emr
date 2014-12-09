@@ -31,6 +31,7 @@
       <column name="ShowTitle" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="ShowDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="ShowTime" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="TheaterNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="ShowID"/>
     </table>
     <table name="test" schema="" catalog="cinema" type="TABLE">
