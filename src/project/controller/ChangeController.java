@@ -22,6 +22,17 @@ public class ChangeController {
     private TableColumn<Change, String> phoneColumn;
     @FXML
     private TableColumn<Change, String> showsColumn;
+    @FXML
+    private TableColumn<Change, String> rowColumn;
+    @FXML
+    private TableColumn<Change, String> seatColumn;
+    @FXML
+    private TableColumn<Change, String> theaterColumn;
+    @FXML
+    private TableColumn<Change, String> dateColumn;
+    @FXML
+    private TableColumn<Change, String> timeColumn;
+
 
     public ChangeController() {
     //empty constructor
