@@ -43,7 +43,10 @@ public class ReservationController {
 
     @FXML
     public void initialize(){
-
+        seatsSelectedBox.setOnAction((event) -> {
+            theater = (int) seatsSelectedBox.getSelectionModel().getSelectedItem();
+            initialize();
+        });
 
 
         seatsGridContainer.setHgap(15);
