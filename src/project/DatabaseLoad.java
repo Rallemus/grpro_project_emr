@@ -11,14 +11,14 @@ public class DatabaseLoad {
 
     private ArrayList[] returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
 
-        // JDBC driver name and database URL
-        static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        static final String DB_URL = "jdbc:mysql://localhost:3306/cinema";
-        // "jdbc:mysql://localhost3306/cinema"
+    // JDBC driver name and database URL
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/cinema";
+    // "jdbc:mysql://localhost3306/cinema"
 
-        //  Database credentials
-        static final String USER = "root";
-        static final String PASS = "123456";
+    //  Database credentials
+    static final String USER = "root";
+    static final String PASS = "123456";
 
 
     public ArrayList[] getFromDatabase(String sql, String table) {
@@ -42,77 +42,77 @@ public class DatabaseLoad {
 
             //STEP 5: Extract data from result set
             //while(rs.next()) {
-                switch (table) {
-                    case "person": {
-                        while(rs.next()) {
-                            String name = rs.getString("Name");
-                            String phone = rs.getString("PhoneNumber");
-                            returnResult[0].add(name);
-                            returnResult[1].add(phone);
-                        }
-                        break;
+            switch (table) {
+                case "person": {
+                    while(rs.next()) {
+                        String name = rs.getString("Name");
+                        String phone = rs.getString("PhoneNumber");
+                        returnResult[0].add(name);
+                        returnResult[1].add(phone);
                     }
-                    case "reservations": {
-                        while (rs.next()) {
-                            int reservationID = rs.getInt("ReservationID");
-                            int personID = rs.getInt("PersonID");
-                            int showID = rs.getInt("ShowID");
-                            String row = rs.getString("Row");
-                            String seat = rs.getString("Seat");
-                            returnResult[0].add(reservationID);
-                            returnResult[1].add(personID);
-                            returnResult[2].add(showID);
-                            returnResult[3].add(row);
-                            returnResult[4].add(seat);
-                        }
-                        break;
-                    }
-                    case "shows": {
-                        while (rs.next()) {
-                            String showTitle = rs.getString("ShowTitle");
-                            Date showDate = rs.getDate("ShowDate");
-                            Time showTime = rs.getTime("ShowTime");
-                            int theaterNumber = rs.getInt("TheaterNumber");
-                            returnResult[0].add(showTitle);
-                            returnResult[1].add(showDate);
-                            returnResult[2].add(showTime);
-                            returnResult[3].add(theaterNumber);
-                        }
-                        break;
-                    }
-                    case "theater": {
-                        while (rs.next()) {
-                            int theaterNumber = rs.getInt("Theater");
-                            int theaterRow = rs.getInt("Row");
-                            int theaterSeat = rs.getInt("Seat");
-                            returnResult[0].add(theaterNumber);
-                            returnResult[1].add(theaterRow);
-                            returnResult[2].add(theaterSeat);
-                        }
-                        break;
-                    }
-                    case "showTitle": {
-                        while (rs.next()) {
-                            String showTitle = rs.getString("ShowTitle");
-                            returnResult[0].add(showTitle);
-                        }
-                        break;
-                    }
-                    case "showDate": {
-                        while (rs.next()) {
-                            Date showDate = rs.getDate("ShowDate");
-                            returnResult[0].add(showDate);
-                        }
-                        break;
-                    }
-                    case "showTime": {
-                        while (rs.next()) {
-                            Time showTime = rs.getTime("ShowTime");
-                            returnResult[0].add(showTime);
-                        }
-                        break;
-                    }
+                    break;
                 }
+                case "reservations": {
+                    while (rs.next()) {
+                        int reservationID = rs.getInt("ReservationID");
+                        int personID = rs.getInt("PersonID");
+                        int showID = rs.getInt("ShowID");
+                        int row = rs.getInt("Row");
+                        int seat = rs.getInt("Seat");
+                        returnResult[0].add(reservationID);
+                        returnResult[1].add(personID);
+                        returnResult[2].add(showID);
+                        returnResult[3].add(row);
+                        returnResult[4].add(seat);
+                    }
+                    break;
+                }
+                case "shows": {
+                    while (rs.next()) {
+                        String showTitle = rs.getString("ShowTitle");
+                        Date showDate = rs.getDate("ShowDate");
+                        Time showTime = rs.getTime("ShowTime");
+                        int theaterNumber = rs.getInt("TheaterNumber");
+                        returnResult[0].add(showTitle);
+                        returnResult[1].add(showDate);
+                        returnResult[2].add(showTime);
+                        returnResult[3].add(theaterNumber);
+                    }
+                    break;
+                }
+                case "theater": {
+                    while (rs.next()) {
+                        int theaterNumber = rs.getInt("Theater");
+                        int theaterRow = rs.getInt("Row");
+                        int theaterSeat = rs.getInt("Seat");
+                        returnResult[0].add(theaterNumber);
+                        returnResult[1].add(theaterRow);
+                        returnResult[2].add(theaterSeat);
+                    }
+                    break;
+                }
+                case "showTitle": {
+                    while (rs.next()) {
+                        String showTitle = rs.getString("ShowTitle");
+                        returnResult[0].add(showTitle);
+                    }
+                    break;
+                }
+                case "showDate": {
+                    while (rs.next()) {
+                        Date showDate = rs.getDate("ShowDate");
+                        returnResult[0].add(showDate);
+                    }
+                    break;
+                }
+                case "showTime": {
+                    while (rs.next()) {
+                        Time showTime = rs.getTime("ShowTime");
+                        returnResult[0].add(showTime);
+                    }
+                    break;
+                }
+            }
 
 
             //STEP 6: Clean-up environment
@@ -186,8 +186,8 @@ public class DatabaseLoad {
                     }
                     break;
                 }
-            }
 
+            }
 
             //STEP 6: Clean-up environment
             rs.close();

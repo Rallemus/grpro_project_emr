@@ -36,10 +36,7 @@ public class Cinema {
     public static void main(String[] args) {
 
         Cinema cinema = new Cinema();
-  /*      cinema.getShow();
-        cinema.getDate();
-        cinema.getTime();
-  */  }
+  }
 
 
     public ObservableList getShow(String showdate, String showtime) {
@@ -49,16 +46,16 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtime == "") {
-            WhereClause = "";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showdate == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showdate != "" && showtime == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause;
 
@@ -75,16 +72,16 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showtitle == "" && showtime == "") {
-            WhereClause = "";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showtitle == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showtitle != "" && showtime == "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         sqlStatement = "SELECT DISTINCT ShowDate FROM shows " + WhereClause;
 
@@ -99,16 +96,16 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtitle == "") {
-            WhereClause = "";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showdate == "" && showtitle != "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else if (showdate != "" && showtitle == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
         }
 
         sqlStatement = "SELECT DISTINCT ShowTime FROM shows " + WhereClause;
@@ -117,61 +114,4 @@ public class Cinema {
         showTime.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
         return showTime;
     }
-
-/*    public ObservableList getShowDependDate() {
-        ObservableList<String> showTitleDate = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows WHERE ShowTitle = 'ShowTitle'","shows");
-        //fills an arraylist with data from database table "shows"
-        showTitleDate.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
-        return showTitleDate;
-    }
-
-    public ObservableList getDateDependShow(String showthetitle) {
-        Cinema cine = new Cinema();
-        ObservableList<String> showDateTitle = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT DISTINCT ShowTitle, ShowDate, CAST('00:00:00' AS TIME) AS ShowTime FROM shows WHERE ShowTitle = " + "\"" + showthetitle + "\"","shows");
-        //fills an arraylist with data from database table "shows"
-        showDateTitle.setAll(data[1]); //0 refers to the first column in the table "shows" which holds titles.
-        return showDateTitle;
-    }
-
-
-    public ObservableList getShowDependTime() {
-        ObservableList<String> showTitleTime = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT ShowTime FROM shows WHERE ShowTitle = boxShow.getValue()","shows");
-        //fills an arraylist with data from database table "shows"
-        showTitleTime.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
-        return showTitleTime;
-    }
-
-    public ObservableList getTimeDependShow(String showthetitle) {
-        ObservableList<String> showTimeTitle = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT DISTINCT ShowTitle, ShowDate, CAST('00:00:00' AS TIME) AS ShowTime FROM shows WHERE ShowTitle = " + "\"" + showthetitle + "\"","shows");
-        //fills an arraylist with data from database table "shows"
-        showTimeTitle.setAll(data[2]); //0 refers to the first column in the table "shows" which holds titles.
-        return showTimeTitle;
-    }
-
-    public ObservableList getDateDependTime() {
-        ObservableList<String> showDateTime = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows WHERE ShowDate = " + entitel,"shows");
-        //fills an arraylist with data from database table "shows"
-        showDateTime.setAll(data[1]); //0 refers to the first column in the table "shows" which holds titles.
-        return showDateTime;
-    }
-
-    public ObservableList getTimeDependDate() {
-        ObservableList<String> showTimeDate = FXCollections.observableArrayList(); //creates list to hold data to show
-        // in the choicebox.
-        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows WHERE ShowDate = ShowTime","shows");
-        //fills an arraylist with data from database table "shows"
-        showTimeDate.setAll(data[2]); //0 refers to the first column in the table "shows" which holds titles.
-        return showTimeDate;
-    }
-*/
 }

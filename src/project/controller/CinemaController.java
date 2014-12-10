@@ -73,7 +73,7 @@ public class CinemaController {
                 titletofreezelist.add(titletofreeze);//adds the selected title to an ObservableList, which is neccesary
                 // because this is the value needed to set the items in a combobox.
                 boxShows.itemsProperty().set(titletofreezelist);
-        //        boxShows.setItems(titletofreezelist);//makes sure that once you select an item, it is no longer possible
+                //        boxShows.setItems(titletofreezelist);//makes sure that once you select an item, it is no longer possible
                 //to change this value. This makes sure that you, after selecting
                 //a date and a time, can't choose a title that doesn't match
                 //the selected date and time.
