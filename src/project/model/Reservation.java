@@ -28,8 +28,6 @@ public class Reservation {
     private int numberOfRows;
     private int numberOfSeats;
     private int numberOfSeatsInARow;
-    private GridPane seatsGrid;
-
 
     public Reservation () {
         ArrayList[] shows = database.getFromDatabase("SELECT * FROM shows", "shows");
@@ -37,12 +35,10 @@ public class Reservation {
         dates = shows[1];
         times = shows[2];
         System.out.println("Constructed successfully");
-    }
 
-    public void initializeSeats(int showID) {
-        //ArrayList[] reservations = database.getFromDatabase("SELECT * FROM reservations WHERE ShowID=" + showID, "reservations");
 
-        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows")[3].get(0);
+
+        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + 1, "shows")[3].get(0);
         System.out.println("Theater number: " + currentTheater);
         ArrayList[] theater = database.getFromDatabase("SELECT * FROM theater WHERE Theater=" + currentTheater, "theater");
 
@@ -52,49 +48,22 @@ public class Reservation {
         System.out.println("Rows: " + numberOfRows);
         System.out.println("Seats: " + numberOfSeats);
         System.out.println("Seats per row:" + numberOfSeatsInARow);
+    }
 
-
-        seatsGrid = new GridPane();
-        seatsGrid.setHgap(15);
-        seatsGrid.setVgap(15);
-        seatsGrid.setAlignment(Pos.CENTER);
-
-        final Seat[][] seat = new Seat[numberOfRows][numberOfSeats];
-        for (int row = 0; row < seat.length; row++) {
-            for (int seatNumber = 0; seatNumber < seat.length; seatNumber++) {
-                //int seatsLeftInRow = numberOfSeatsInARow - seatNumber - 1;
-                int shownSeatNumber;
-
-                seat[row][seatNumber] = new Seat("");
-                seat[row][seatNumber].setPrefSize(35, 35);
-
-                if (seat[row][seatNumber].isFree()) {
-                    seat[row][seatNumber].setStyle("-fx-background-color: green;");
-                    seat[row][seatNumber].setOnMouseEntered(me -> seatsGrid.setCursor(Cursor.HAND));
-                    seat[row][seatNumber].setOnMouseExited(me -> seatsGrid.setCursor(Cursor.DEFAULT));
-                } else {
-                    seat[row][seatNumber].setStyle("-fx-background-color: red;");
-                    seat[row][seatNumber].setDisable(true);
-                }
-                seatsGrid.add(seat[row][seatNumber], seatNumber, row);
-
-                final int finalI = row;
-                final int finalJ = seatNumber;
-                seat[row][seatNumber].setOnMouseClicked(arg0 -> {
-                    for (int i = 0; i < seat.length; i++) {
-                        for (int j = 0; j < seat.length; j++) {
-
-                            if (seat[i][j].isFree()) {
-                                seat[i][j].setStyle("-fx-background-color: green;");
-                            }
-
-                        }
-                    }
-                    Seat selectedSeat = (Seat) arg0.getSource();
-                    selectedSeat.setStyle("-fx-background-color: dodgerblue;");
-                });
-            }
+    public ArrayList loadOccupiedSeats(int showID) {
+        ArrayList[] reservations = database.getFromDatabase("SELECT * FROM reservations WHERE ShowID=" + showID, "reservations");
+        ArrayList row = reservations[3];
+        ArrayList seats = reservations[4];
+        ArrayList occupiedPairs = new ArrayList();
+        for(int i = 0 ; i < row.size() ; i++) {
+            //occupiedPairs.add(new int[] {(int) row.get(i), (int) seats.get(i)});
+            occupiedPairs.add(""+ row.get(i) + seats.get(i));
         }
+        return occupiedPairs;
+    }
+
+    public void initializeSeats(int showID) {
+
     }
 
 
@@ -121,9 +90,5 @@ public class Reservation {
 
     public int getNumberOfSeatsInARow() {
         return numberOfSeatsInARow;
-    }
-
-    public GridPane getSeatsGrid() {
-        return seatsGrid;
     }
 }

@@ -189,6 +189,7 @@ public class DatabaseLoad {
 
             }
 
+
             //STEP 6: Clean-up environment
             rs.close();
             stmt.close();

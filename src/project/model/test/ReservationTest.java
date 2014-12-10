@@ -1,4 +1,6 @@
-package project.model;
+package project.model.test;
+
+import project.model.Reservation;
 
 import static org.junit.Assert.*;
 
