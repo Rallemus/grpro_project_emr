@@ -19,12 +19,11 @@
       <index name="PhoneNumber_UNIQUE" unique="true" columns="PhoneNumber"/>
     </table>
     <table name="reservations" schema="" catalog="cinema" type="TABLE">
-      <column name="ReservationID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="PersonID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="ShowID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="Row" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ReservationID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PersonID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ShowID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Row" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="Seat" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="ReservationID"/>
     </table>
     <table name="shows" schema="" catalog="cinema" type="TABLE">
       <column name="ShowID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>

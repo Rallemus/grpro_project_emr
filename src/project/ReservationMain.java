@@ -18,7 +18,7 @@ public class ReservationMain extends Application {
     public void showReservationView(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/reservations.fxml"));
+            loader.setLocation(getClass().getResource("view/reservation.fxml"));
             Parent reservationView = loader.load();
             ReservationController controller = loader.getController();
             controller.initialize();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -13,20 +14,15 @@
             <children>
                 <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sal:" />
+                        <Text fx:id="theaterNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Sal:" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige pladser:" />
                     </children>
                 </VBox>
                 <Separator HBox.hgrow="ALWAYS" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sæder:" />
-                <MenuButton mnemonicParsing="false" text="Antal">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                </MenuButton>
+                <Text fx:id="freeSeats" strokeType="OUTSIDE" strokeWidth="0.0" text="Sæder:" />
+            <ComboBox fx:id="seatsSelectedBox" prefHeight="29.0" prefWidth="81.0" promptText="Antal" />
                 <Separator HBox.hgrow="ALWAYS" />
-                <Button mnemonicParsing="false" text="Reservér" />
+                <Button fx:id="reserveButton" mnemonicParsing="false" text="Reservér" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -34,7 +30,7 @@
         </HBox>
     </bottom>
     <top>
-        <HBox fx:id="seatsGridContainer" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -49,6 +45,21 @@
         </HBox>
     </top>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <GridPane fx:id="seatsGridContainer" alignment="CENTER" BorderPane.alignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <columnConstraints>
+                        <ColumnConstraints />
+                     </columnConstraints>
+                  </GridPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </center>
 </BorderPane>
