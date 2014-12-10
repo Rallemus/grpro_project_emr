@@ -46,16 +46,19 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtime == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showdate == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showdate != "" && showtime == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause;
 
@@ -72,16 +75,19 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showtitle == "" && showtime == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showtitle == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showtitle != "" && showtime == "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         sqlStatement = "SELECT DISTINCT ShowDate FROM shows " + WhereClause;
 
@@ -96,16 +102,19 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtitle == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showdate == "" && showtitle != "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else if (showdate != "" && showtitle == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'" + "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'" +
+                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
         }
 
         sqlStatement = "SELECT DISTINCT ShowTime FROM shows " + WhereClause;

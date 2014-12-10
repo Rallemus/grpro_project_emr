@@ -13,12 +13,12 @@ public class DatabaseLoad {
 
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/cinema";
+    static final String DB_URL = "jdbc:mysql://mysql.itu.dk/BBooking";
     // "jdbc:mysql://localhost3306/cinema"
 
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "123456";
+    static final String USER = "emr";
+    static final String PASS = "emr123456";
 
 
     public ArrayList[] getFromDatabase(String sql, String table) {

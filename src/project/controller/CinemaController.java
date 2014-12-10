@@ -11,6 +11,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -68,20 +69,20 @@ public class CinemaController {
         boxShows.setOnAction((event) -> {
             if (!boxShows.getSelectionModel().isEmpty()) { //only execute this code if a title has actually been selected
                 String showtitle = boxShows.getSelectionModel().getSelectedItem().toString();
+                //a parameter to send as parameter to the model-class, which is used to get specific dates and times
+                //matching the given title.
+
                 String titletofreeze = boxShows.getSelectionModel().getSelectedItem();
                 ObservableList<String> titletofreezelist = FXCollections.observableArrayList();
                 titletofreezelist.add(titletofreeze);//adds the selected title to an ObservableList, which is neccesary
                 // because this is the value needed to set the items in a combobox.
-                boxShows.itemsProperty().set(titletofreezelist);
+                boxShows.setItems(titletofreezelist);
                 //        boxShows.setItems(titletofreezelist);//makes sure that once you select an item, it is no longer possible
                 //to change this value. This makes sure that you, after selecting
                 //a date and a time, can't choose a title that doesn't match
                 //the selected date and time.
-                System.out.println(boxShows.getSelectionModel().getSelectedItem());
                 //Execute only if the comboboxes containing dates and times are empty
                 if (boxDate.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
-                    //a parameter to send as parameter to the model-class, which is used to get specific dates and times
-                    //matching the given title.
                     boxDate.setItems(new Cinema().getDate(showtitle, ""));//set dates matching the title
                     boxTime.setItems(new Cinema().getTime("", showtitle));//set times matching the title
                 } else if (!boxDate.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
@@ -106,8 +107,7 @@ public class CinemaController {
                 Date datetofreeze = boxDate.getSelectionModel().getSelectedItem();
                 ObservableList<Date> datetofreezelist = FXCollections.observableArrayList();
                 datetofreezelist.add(datetofreeze);
-                boxDate.itemsProperty().set(datetofreezelist);
-                System.out.println(boxDate.getSelectionModel().getSelectedItem());
+                boxDate.setItems(datetofreezelist);
 
                 if (boxShows.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
                     boxShows.setItems(new Cinema().getShow(showdate, ""));
@@ -133,8 +133,7 @@ public class CinemaController {
                 Time timetofreeze = boxTime.getSelectionModel().getSelectedItem();
                 ObservableList<Time> timetofreezelist = FXCollections.observableArrayList();
                 timetofreezelist.add(timetofreeze);
-                boxTime.itemsProperty().set(timetofreezelist);
-                System.out.println(boxTime.getSelectionModel().getSelectedItem());
+                boxTime.setItems(timetofreezelist);
 
                 if (boxDate.getSelectionModel().isEmpty() && boxShows.getSelectionModel().isEmpty()) {
                     boxDate.setItems(new Cinema().getDate("", showtime));
