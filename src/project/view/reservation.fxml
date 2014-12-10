@@ -18,10 +18,10 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ledige pladser:" />
                     </children>
                 </VBox>
-                <Separator HBox.hgrow="ALWAYS" />
+                <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
                 <Text fx:id="freeSeats" strokeType="OUTSIDE" strokeWidth="0.0" text="Sæder:" />
             <ComboBox fx:id="seatsSelectedBox" prefHeight="29.0" prefWidth="81.0" promptText="Antal" />
-                <Separator HBox.hgrow="ALWAYS" />
+                <Separator opacity="0.0" HBox.hgrow="ALWAYS" />
                 <Button fx:id="reserveButton" mnemonicParsing="false" text="Reservér" />
             </children>
             <padding>
