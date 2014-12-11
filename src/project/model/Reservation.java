@@ -28,19 +28,19 @@ public class Reservation {
     private int numberOfRows;
     private int numberOfSeats;
     private int numberOfSeatsInARow;
+    private int theaterNumber;
 
     public Reservation () {
         ArrayList[] shows = database.getFromDatabase("SELECT * FROM shows", "shows");
         movies = shows[0];
         dates = shows[1];
         times = shows[2];
-        System.out.println("Constructed successfully");
     }
 
     public void loadTheaterFromDatabase(int showID) {
-        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows")[3].get(0);
-        //System.out.println("Theater number: " + currentTheater);
-        ArrayList[] theater = database.getFromDatabase("SELECT * FROM theater WHERE Theater=" + currentTheater, "theater");
+        theaterNumber = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows")[3].get(0);
+        System.out.println("Theater number: " + theaterNumber);
+        ArrayList[] theater = database.getFromDatabase("SELECT * FROM theater WHERE Theater=" + theaterNumber, "theater");
 
         numberOfRows = (int) theater[1].get(theater[1].size() - 1);
         numberOfSeatsInARow = (int) theater[2].get(theater[2].size() - 1);
@@ -84,5 +84,9 @@ public class Reservation {
 
     public int getNumberOfSeatsInARow() {
         return numberOfSeatsInARow;
+    }
+
+    public int getTheaterNumber() {
+        return theaterNumber;
     }
 }

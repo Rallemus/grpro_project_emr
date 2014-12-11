@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 public class Seat extends Button {
 
     private boolean isFree;
+    private boolean isSelected;
 
     public Seat(String text) {
         super(text);
         isFree = true;
+        isSelected = false;
     }
 
 
@@ -21,5 +23,13 @@ public class Seat extends Button {
 
     public void setIsFree(boolean value) {
         isFree = value;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean value) {
+        isSelected = value;
     }
 }

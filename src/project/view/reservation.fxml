@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.geometry.*?>
@@ -10,7 +11,7 @@
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ReservationController">
     <bottom>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="100.0" spacing="5.0" BorderPane.alignment="CENTER">
             <children>
                 <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                     <children>
@@ -42,18 +43,19 @@
         </HBox>
     </bottom>
     <top>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
-            <children>
-                <ComboBox fx:id="moviesBox" prefWidth="150.0" promptText="Film" />
-                <ComboBox fx:id="datesBox" prefWidth="150.0" promptText="Dato" />
-                <ComboBox fx:id="timesBox" prefWidth="150.0" promptText="Tid" />
-            </children>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" />
+            <TextField fx:id="nameField" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefon:" />
+            <TextField fx:id="phoneField" />
+         </children>
         </HBox>
     </top>
    <center>
@@ -69,6 +71,21 @@
                         <ColumnConstraints />
                      </columnConstraints>
                   </GridPane>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Separator minWidth="180.0" opacity="0.0" />
+                  <VBox fx:id="movieScreenBox" alignment="CENTER" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fx:id="movieScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="Lærred" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <Separator minWidth="180.0" opacity="0.0" prefHeight="0.0" />
                </children>
             </HBox>
          </children>

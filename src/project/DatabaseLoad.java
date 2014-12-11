@@ -45,10 +45,12 @@ public class DatabaseLoad {
             switch (table) {
                 case "person": {
                     while(rs.next()) {
+                        int personID = rs.getInt("PersonID");
                         String name = rs.getString("Name");
                         String phone = rs.getString("PhoneNumber");
                         returnResult[0].add(name);
                         returnResult[1].add(phone);
+                        returnResult[2].add(personID);
                     }
                     break;
                 }
