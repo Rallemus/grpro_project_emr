@@ -84,7 +84,7 @@ Retrieve the ShowIDs from the reservations in the database.
     }
 
     public Date getDate(int showid) {
-        ArrayList[] data = database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showid, "shows");
+        ArrayList[] data = database.getFromDatabase("SELECT DISTINCT ShowDate FROM shows WHERE ShowID=" + showid, "showDate");
         return (Date) data[1].get(0);
 
     }
