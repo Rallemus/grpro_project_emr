@@ -3,12 +3,13 @@ package project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import project.model.Change;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import java.awt.event.AWTEventListener;
-import java.awt.event.ActionListener;
+import java.sql.Time;
+import java.util.Date;
 
 /**
  * Created by Elise on 03-12-2014.
@@ -23,15 +24,15 @@ public class ChangeController {
     @FXML
     private TableColumn<Change, String> showsColumn;
     @FXML
-    private TableColumn<Change, String> rowColumn;
+    private TableColumn<Change, Integer> rowColumn;
     @FXML
-    private TableColumn<Change, String> seatColumn;
+    private TableColumn<Change, Integer> seatColumn;
     @FXML
-    private TableColumn<Change, String> theaterColumn;
+    private TableColumn<Change, Integer> theaterColumn;
     @FXML
-    private TableColumn<Change, String> dateColumn;
+    private TableColumn<Change, Date> dateColumn;
     @FXML
-    private TableColumn<Change, String> timeColumn;
+    private TableColumn<Change, Time> timeColumn;
 
 
     public ChangeController() {
@@ -40,6 +41,8 @@ public class ChangeController {
 
     @FXML
     public void initialize() {
+
+
 
     }
 

@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.model.Change;
 
 import java.io.IOException;
 
 
 public class changeview extends Application {
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         showCinemaView(primaryStage);
