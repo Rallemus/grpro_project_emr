@@ -30,8 +30,6 @@ public class Cinema {
     }
 */
 
-    public void getSelectedshows() {
-    }
 
     public static void main(String[] args) {
 
@@ -62,7 +60,7 @@ public class Cinema {
         }
         sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause;
 
-        ArrayList[] data = database.getFromDb(sqlStatement, "showTitle");
+        ArrayList[] data = database.getFromDatabase(sqlStatement, "showTitle");
 
         showTitle.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
         return showTitle;
@@ -91,7 +89,7 @@ public class Cinema {
         }
         sqlStatement = "SELECT DISTINCT ShowDate FROM shows " + WhereClause;
 
-        ArrayList[] data = database.getFromDb(sqlStatement, "showDate");
+        ArrayList[] data = database.getFromDatabase(sqlStatement, "showDate");
         showDate.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
         return showDate;
     }
@@ -119,7 +117,7 @@ public class Cinema {
 
         sqlStatement = "SELECT DISTINCT ShowTime FROM shows " + WhereClause;
 
-        ArrayList[] data = database.getFromDb(sqlStatement, "showTime");
+        ArrayList[] data = database.getFromDatabase(sqlStatement, "showTime");
         showTime.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
         return showTime;
     }
