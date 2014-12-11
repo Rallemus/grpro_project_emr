@@ -35,19 +35,19 @@ public class Reservation {
         dates = shows[1];
         times = shows[2];
         System.out.println("Constructed successfully");
+    }
 
-
-
-        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + 1, "shows")[3].get(0);
-        System.out.println("Theater number: " + currentTheater);
+    public void loadTheaterFromDatabase(int showID) {
+        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows")[3].get(0);
+        //System.out.println("Theater number: " + currentTheater);
         ArrayList[] theater = database.getFromDatabase("SELECT * FROM theater WHERE Theater=" + currentTheater, "theater");
 
         numberOfRows = (int) theater[1].get(theater[1].size() - 1);
         numberOfSeatsInARow = (int) theater[2].get(theater[2].size() - 1);
         numberOfSeats = numberOfSeatsInARow * numberOfRows;
-        System.out.println("Rows: " + numberOfRows);
-        System.out.println("Seats: " + numberOfSeats);
-        System.out.println("Seats per row:" + numberOfSeatsInARow);
+        //System.out.println("Rows: " + numberOfRows);
+        //System.out.println("Seats: " + numberOfSeats);
+        //System.out.println("Seats per row:" + numberOfSeatsInARow);
     }
 
     public ArrayList loadOccupiedSeats(int showID) {
@@ -61,12 +61,6 @@ public class Reservation {
         }
         return occupiedPairs;
     }
-
-    public void initializeSeats(int showID) {
-
-    }
-
-
 
     public ArrayList<String> getMovies() {
         return movies;
