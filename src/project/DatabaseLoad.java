@@ -20,7 +20,9 @@ public class DatabaseLoad {
     static final String USER = "emr";
     static final String PASS = "emr123456";
 
+public void initializeDatabase(String sql, String table){
 
+}
     public ArrayList[] getFromDatabase(String sql, String table) {
         returnResult = new ArrayList[] {new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList(), new ArrayList()};
         Connection conn = null;

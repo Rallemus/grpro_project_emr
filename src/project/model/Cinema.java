@@ -30,8 +30,6 @@ public class Cinema {
     }
 */
 
-    public void getSelectedshows() {
-    }
 
     public static void main(String[] args) {
 

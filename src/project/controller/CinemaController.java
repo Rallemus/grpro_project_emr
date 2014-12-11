@@ -19,6 +19,7 @@ import java.util.Date;
  */
 public class CinemaController {
 
+    private Cinema cinema;
     @FXML
     private ComboBox<String> boxShows;
     @FXML
@@ -30,8 +31,17 @@ public class CinemaController {
     @FXML
     private Button reservationButton;
 
+
     public CinemaController() {
+         cinema = new Cinema();
     }
+
+    public void setCinema(Cinema cinema){
+
+        cinema = cinema;
+    }
+
+
 
     /**
      * This method fills out the choicebox made in JavaFX with data from the database by creating a new Cinema
@@ -43,9 +53,9 @@ public class CinemaController {
         //to make a reservation before all 3 parameters (title, date and time)
         //have been selected, as this is needed for a reservation.
 
-        boxShows.setItems(new Cinema().getShow("", "")); //fills a combobox with all available shows (titles)
-        boxDate.setItems(new Cinema().getDate("", "")); //fills a combobox with all available dates for shows
-        boxTime.setItems(new Cinema().getTime("", "")); //fills a combobox with all available times for shows
+        boxShows.setItems(cinema.getShow("", "")); //fills a combobox with all available shows (titles)
+        boxDate.setItems(cinema.getDate("", "")); //fills a combobox with all available dates for shows
+        boxTime.setItems(cinema.getTime("", "")); //fills a combobox with all available times for shows
 
         setActionForShowBox();
 
@@ -71,26 +81,23 @@ public class CinemaController {
                 String showtitle = boxShows.getSelectionModel().getSelectedItem().toString();
                 //a parameter to send as parameter to the model-class, which is used to get specific dates and times
                 //matching the given title.
-
                 String titletofreeze = boxShows.getSelectionModel().getSelectedItem();
                 ObservableList<String> titletofreezelist = FXCollections.observableArrayList();
                 titletofreezelist.add(titletofreeze);//adds the selected title to an ObservableList, which is neccesary
                 // because this is the value needed to set the items in a combobox.
-                boxShows.setItems(titletofreezelist);
-                //        boxShows.setItems(titletofreezelist);//makes sure that once you select an item, it is no longer possible
-                //to change this value. This makes sure that you, after selecting
-                //a date and a time, can't choose a title that doesn't match
-                //the selected date and time.
+                boxShows.setItems(titletofreezelist);//makes sure that once you select an item, it is no longer possible
+                //to change this value. This makes sure that you, after selecting a date and a time, can't choose a
+                // title that doesn't match the selected date and time.
                 //Execute only if the comboboxes containing dates and times are empty
                 if (boxDate.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
-                    boxDate.setItems(new Cinema().getDate(showtitle, ""));//set dates matching the title
-                    boxTime.setItems(new Cinema().getTime("", showtitle));//set times matching the title
+                    boxDate.setItems(cinema.getDate(showtitle, ""));//set dates matching the title
+                    boxTime.setItems(cinema.getTime("", showtitle));//set times matching the title
                 } else if (!boxDate.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
                     String showdate = boxDate.getSelectionModel().getSelectedItem().toString();
-                    boxTime.setItems(new Cinema().getTime(showdate, showtitle));
+                    boxTime.setItems(cinema.getTime(showdate, showtitle));
                 } else if (boxDate.getSelectionModel().isEmpty() && !boxTime.getSelectionModel().isEmpty()) {
                     String showtime = boxTime.getSelectionModel().getSelectedItem().toString();
-                    boxDate.setItems(new Cinema().getDate(showtitle, showtime));
+                    boxDate.setItems(cinema.getDate(showtitle, showtime));
                 }
                 //Sets the reservation button to visible as all three parameters needed for this action has been selected
                 if (!boxShows.getSelectionModel().isEmpty() && !boxDate.getSelectionModel().isEmpty() && !boxTime.getSelectionModel().isEmpty()) {
@@ -110,14 +117,14 @@ public class CinemaController {
                 boxDate.setItems(datetofreezelist);
 
                 if (boxShows.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
-                    boxShows.setItems(new Cinema().getShow(showdate, ""));
-                    boxTime.setItems(new Cinema().getTime(showdate, ""));
+                    boxShows.setItems(cinema.getShow(showdate, ""));
+                    boxTime.setItems(cinema.getTime(showdate, ""));
                 } else if (!boxShows.getSelectionModel().isEmpty() && boxTime.getSelectionModel().isEmpty()) {
                     String showtitle = boxShows.getSelectionModel().getSelectedItem().toString();
-                    boxTime.setItems(new Cinema().getTime(showdate, showtitle));
+                    boxTime.setItems(cinema.getTime(showdate, showtitle));
                 } else if (boxShows.getSelectionModel().isEmpty() && !boxTime.getSelectionModel().isEmpty()) {
                     String showtime = boxTime.getSelectionModel().getSelectedItem().toString();
-                    boxShows.setItems(new Cinema().getShow(showdate, showtime));
+                    boxShows.setItems(cinema.getShow(showdate, showtime));
                 }
                 if (!boxShows.getSelectionModel().isEmpty() && !boxDate.getSelectionModel().isEmpty() && !boxTime.getSelectionModel().isEmpty()) {
                     reservationButton.setVisible(true);
@@ -136,14 +143,14 @@ public class CinemaController {
                 boxTime.setItems(timetofreezelist);
 
                 if (boxDate.getSelectionModel().isEmpty() && boxShows.getSelectionModel().isEmpty()) {
-                    boxDate.setItems(new Cinema().getDate("", showtime));
-                    boxShows.setItems(new Cinema().getShow("", showtime));
+                    boxDate.setItems(cinema.getDate("", showtime));
+                    boxShows.setItems(cinema.getShow("", showtime));
                 } else if (!boxDate.getSelectionModel().isEmpty() && boxShows.getSelectionModel().isEmpty()) {
                     String showdate = boxDate.getSelectionModel().getSelectedItem().toString();
-                    boxShows.setItems(new Cinema().getShow(showdate, showtime));
+                    boxShows.setItems(cinema.getShow(showdate, showtime));
                 } else if (boxDate.getSelectionModel().isEmpty() && !boxShows.getSelectionModel().isEmpty()) {
                     String showtitle = boxShows.getSelectionModel().getSelectedItem().toString();
-                    boxDate.setItems(new Cinema().getDate(showtitle, showtime));
+                    boxDate.setItems(cinema.getDate(showtitle, showtime));
                 }
                 if (!boxShows.getSelectionModel().isEmpty() && !boxDate.getSelectionModel().isEmpty() && !boxTime.getSelectionModel().isEmpty()) {
                     reservationButton.setVisible(true);
@@ -155,21 +162,32 @@ public class CinemaController {
     private void setActionForClearBoxes() {
         clearBoxes.setOnAction((event) -> {
             boxShows.getSelectionModel().clearSelection();//Clears the combobox
-            boxShows.setItems(new Cinema().getShow("", ""));//Fills the combobox with it's original
+            boxShows.setItems(cinema.getShow("", ""));//Fills the combobox with it's original
             reservationButton.setVisible(false);//As the box is now unselected, it is no longer possible to make a reservation
             boxShows.setPromptText("Forestilling");
 
             boxDate.getSelectionModel().clearSelection();
-            boxDate.setItems(new Cinema().getDate("", ""));
+            boxDate.setItems(cinema.getDate("", ""));
             reservationButton.setVisible(false);
             boxDate.setPromptText("Dato");
 
             boxTime.getSelectionModel().clearSelection();
-            boxTime.setItems(new Cinema().getTime("", ""));
+            boxTime.setItems(cinema.getTime("", ""));
             reservationButton.setVisible(false);
             boxTime.setPromptText("Tidspunkt");
 
 
         });
     }
-}
+
+    public Button getButton(){
+        return reservationButton;
+    }
+
+    public boolean buttonvisible() {
+        boolean visible = false;
+        if (reservationButton.isVisible()) visible = true;
+        if (!reservationButton.isVisible()) visible = false;
+        return visible;
+    }
+    }
