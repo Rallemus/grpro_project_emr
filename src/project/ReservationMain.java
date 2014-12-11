@@ -23,7 +23,7 @@ public class ReservationMain extends Application {
             ReservationController controller = loader.getController();
             controller.initialize();
             primaryStage.setTitle("Reservation");
-            primaryStage.setScene(new Scene(reservationView, 500, 500));
+            primaryStage.setScene(new Scene(reservationView, 800, 600));
 
             /*Get the controller from the fx:controller attribute of our FXML*/
 

@@ -1,20 +1,18 @@
 package project.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuButton;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import project.DatabaseLoad;
 import project.model.Reservation;
 import project.model.Seat;
 
-import java.lang.reflect.Array;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -23,11 +21,9 @@ import java.util.ArrayList;
 public class ReservationController {
 
     private Reservation reservation = new Reservation();
-    private int numberOfRows;
-    private int numberOfSeats;
-    private int numberOfSeatsInARow;
     private int theater = 1;
-    private int numberOfSeatsSelected;
+    private ObservableList numberOfSeatsSelectedItems = FXCollections.observableArrayList();
+    private int numberOfSeatsToSelect = 1;
 
     @FXML
     private GridPane seatsGridContainer;
@@ -40,14 +36,18 @@ public class ReservationController {
     @FXML
     private Button reserveButton;
 
+    public ReservationController() {
+        reservation.loadTheaterFromDatabase(1);
+        numberOfSeatsSelectedItems.addAll(1,2,3,4,5,6,7,8);
+    }
+
 
     @FXML
     public void initialize(){
+        seatsSelectedBox.setItems(numberOfSeatsSelectedItems);
         seatsSelectedBox.setOnAction((event) -> {
-            theater = (int) seatsSelectedBox.getSelectionModel().getSelectedItem();
-            initialize();
+            numberOfSeatsToSelect = (int) seatsSelectedBox.getSelectionModel().getSelectedItem();
         });
-
 
         seatsGridContainer.setHgap(15);
         seatsGridContainer.setVgap(15);
@@ -61,6 +61,8 @@ public class ReservationController {
                 seat[row][seatNumber] = new Seat("");
                 seat[row][seatNumber].setPrefSize(35, 35);
 
+                final int finalRow = row;
+                final int finalSeatNumber = seatNumber;
                 seat[row][seatNumber].setOnMouseClicked(arg0 -> {
                     for (int i = 0; i < seat.length; i++) {
                         for (int j = 0; j < seat.length; j++) {
@@ -69,9 +71,9 @@ public class ReservationController {
                             }
                         }
                     }
-                    Seat selectedSeat = (Seat) arg0.getSource();
-                    selectedSeat.setStyle("-fx-background-color: dodgerblue;");
-                    // select more seats
+                    for(int i = 0 ; i < numberOfSeatsToSelect ; i++) {
+                        seat[finalRow][finalSeatNumber + i].setStyle("-fx-background-color: dodgerblue;");
+                    }
                 });
 
                 if(occupiedSeats.contains("" + row + seatNumber)) {
@@ -86,68 +88,11 @@ public class ReservationController {
                     seat[row][seatNumber].setStyle("-fx-background-color: red;");
                     seat[row][seatNumber].setDisable(true);
                 }
-
                 seatsGridContainer.add(seat[row][seatNumber], seatNumber, row);
             }
         }
+
+        theaterNumber.setText("Sal nr: " + theater);
+        freeSeats.setText("Ledige sæder: " + (reservation.getNumberOfSeats()-occupiedSeats.size()));
     }
-
-/*
-    public void initializeSeats(int showID) {
-        //ArrayList[] reservations = database.getFromDatabase("SELECT * FROM reservations WHERE ShowID=" + showID, "reservations");
-
-        int currentTheater = (int) database.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows")[3].get(0);
-        System.out.println("Theater number: " + currentTheater);
-        ArrayList[] theater = database.getFromDatabase("SELECT * FROM theater WHERE Theater=" + currentTheater, "theater");
-
-        numberOfRows = (int) theater[1].get(theater[1].size() - 1);
-        numberOfSeatsInARow = (int) theater[2].get(theater[2].size() - 1);
-        numberOfSeats = numberOfSeatsInARow * numberOfRows;
-        System.out.println("Rows: " + numberOfRows);
-        System.out.println("Seats: " + numberOfSeats);
-        System.out.println("Seats per row:" + numberOfSeatsInARow);
-
-
-        seatsGridContainer.setHgap(15);
-        seatsGridContainer.setVgap(15);
-        seatsGridContainer.setAlignment(Pos.CENTER);
-
-        final Seat[][] seat = new Seat[numberOfRows][numberOfSeats];
-        for (int row = 0; row < seat.length; row++) {
-            for (int seatNumber = 0; seatNumber < seat.length; seatNumber++) {
-                //int seatsLeftInRow = numberOfSeatsInARow - seatNumber - 1;
-                int shownSeatNumber;
-
-                seat[row][seatNumber] = new Seat("");
-                seat[row][seatNumber].setPrefSize(35, 35);
-
-                if (seat[row][seatNumber].isFree()) {
-                    seat[row][seatNumber].setStyle("-fx-background-color: green;");
-                    seat[row][seatNumber].setOnMouseEntered(me -> seatsGridContainer.setCursor(Cursor.HAND));
-                    seat[row][seatNumber].setOnMouseExited(me -> seatsGridContainer.setCursor(Cursor.DEFAULT));
-                } else {
-                    seat[row][seatNumber].setStyle("-fx-background-color: red;");
-                    seat[row][seatNumber].setDisable(true);
-                }
-                seatsGridContainer.add(seat[row][seatNumber], seatNumber, row);
-
-                final int finalI = row;
-                final int finalJ = seatNumber;
-                seat[row][seatNumber].setOnMouseClicked(arg0 -> {
-                    for (int i = 0; i < seat.length; i++) {
-                        for (int j = 0; j < seat.length; j++) {
-
-                            if (seat[i][j].isFree()) {
-                                seat[i][j].setStyle("-fx-background-color: green;");
-                            }
-
-                        }
-                    }
-                    Seat selectedSeat = (Seat) arg0.getSource();
-                    selectedSeat.setStyle("-fx-background-color: dodgerblue;");
-                });
-            }
-        }
-    }
-    */
 }
