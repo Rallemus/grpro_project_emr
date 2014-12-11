@@ -8,12 +8,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ChangeController">
    <children>
-      <TableView fx:id="changeTable" layoutX="6.0" layoutY="70.0" prefHeight="324.0" prefWidth="587.0">
+      <TableView fx:id="changeTable" editable="true" layoutX="6.0" layoutY="70.0" prefHeight="324.0" prefWidth="587.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="164.0" text="Navn" />
-          <TableColumn fx:id="phoneColumn" prefWidth="116.0" text="Tlf" />
-            <TableColumn fx:id="showsColumn" prefWidth="178.0" text="Forestilling" />
-            <TableColumn prefWidth="128.0" text="Pladser" />
+          <TableColumn fx:id="nameColumn" editable="false" prefWidth="60.0" text="Navn" />
+          <TableColumn fx:id="phoneColumn" prefWidth="60.0" text="Tlf" />
+            <TableColumn fx:id="showsColumn" prefWidth="121.0" text="Film" />
+            <TableColumn fx:id="dateColumn" prefWidth="101.0" text="Dato" />
+            <TableColumn fx:id="timeColumn" prefWidth="93.0" text="Tidspunkt" />
+            <TableColumn fx:id="theaterColumn" prefWidth="36.0" text="Sal" />
+            <TableColumn fx:id="rowColumn" prefWidth="50.0" text="Række" />
+            <TableColumn fx:id="seatColumn" prefWidth="64.0" text="Sæde(r)" />
         </columns>
       </TableView>
       <TextField layoutX="40.0" layoutY="29.0" />
