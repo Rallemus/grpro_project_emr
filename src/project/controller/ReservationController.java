@@ -161,7 +161,7 @@ public class ReservationController {
         });
 
         ArrayList[] shows = databaseLoad.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows");
-        movieTimeText.setText("Film: " + shows[0].get(0));
+        movieTitleText.setText("Film: " + shows[0].get(0));
         movieDateText.setText("Dato: " + shows[1].get(0).toString());
         movieTimeText.setText("Tidspunkt:  " + shows[2].get(0).toString());
 
