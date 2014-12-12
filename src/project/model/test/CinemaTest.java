@@ -124,12 +124,12 @@ public class CinemaTest {
     public void testGetDate() throws Exception {
         Cinema cinema = new Cinema();
         ObservableList dates;
-/*
+
         dates = cinema.getDate("", "");
-        String date = String.valueOf(dates.toArray()[0]);
+/*        String date = String.valueOf(dates.toArray()[0]);
         System.out.println(date);
         assertEquals(date, 20141209);
-        assertEquals(dates.size(), 75);
+        assertEquals(dates.size(), 17);
 
         ObservableList shows2;
         shows2 = cinema.getShow("20141224", "");
