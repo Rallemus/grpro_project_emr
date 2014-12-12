@@ -91,4 +91,13 @@
          </children>
       </VBox>
    </center>
+   <left>
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="movieTitleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Film:" />
+            <Text fx:id="movieDateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Dato:" />
+            <Text fx:id="movieTimeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Tidspunkt:" />
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

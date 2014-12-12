@@ -32,6 +32,8 @@ public class ReservationController {
     private int theater;
     private ObservableList numberOfSeatsSelectedItems = FXCollections.observableArrayList();
     private int numberOfSeatsToSelect = 1;
+    private int selectedRow;
+    private int selectedSeat;
     private int showID = 2; //hardcoded for now
 
 
@@ -51,6 +53,12 @@ public class ReservationController {
     private ComboBox seatsSelectedBox;
     @FXML
     private Button reserveButton;
+    @FXML
+    private Text movieTitleText;
+    @FXML
+    private Text movieDateText;
+    @FXML
+    private Text movieTimeText;
 
 
     public ReservationController() {
@@ -84,6 +92,8 @@ public class ReservationController {
                 final int finalRow = row;
                 final int finalSeatNumber = seatNumber;
                 seat[row][seatNumber].setOnMouseClicked(arg0 -> {
+                    selectedRow = finalRow;
+                    selectedSeat = finalSeatNumber;
                     for (int i = 0; i < seat.length; i++) {
                         for (int j = 0; j < seat[0].length; j++) {
                             if (seat[i][j].isFree()) {
@@ -142,11 +152,18 @@ public class ReservationController {
             ArrayList arr = databaseLoad.getFromDatabase("SELECT * FROM reservations","reservations")[0];
             int nextReservationID = (int) arr.get(arr.size()-1) + 1;
 
-            for(int i = 0; i < 1 ; i++) {
-                databaseInsert.newReservationInDatabase(nextReservationID, nextPersonID, showID, 1, 1);
+
+            for(int i = 0; i < numberOfSeatsToSelect ; i++) {
+                databaseInsert.newReservationInDatabase(
+                        nextReservationID, nextPersonID, showID, selectedRow, selectedSeat+i);
             }
             initialize();
         });
+
+        ArrayList[] shows = databaseLoad.getFromDatabase("SELECT * FROM shows WHERE ShowID=" + showID, "shows");
+        movieTimeText.setText("Film: " + shows[0].get(0));
+        movieDateText.setText("Dato: " + shows[1].get(0).toString());
+        movieTimeText.setText("Tidspunkt:  " + shows[2].get(0).toString());
 
         theaterNumber.setText("Sal nr: " + theater);
         freeSeats.setText("Ledige sæder: " + (reservation.getNumberOfSeats()-occupiedSeats.size()));
