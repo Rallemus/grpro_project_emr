@@ -44,21 +44,19 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtime == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "" + "WHERE ";
         }
         else if (showdate == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ";
         }
         else if (showdate != "" && showtime == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTime = '" + showtime + "'" + "AND ";
         }
-        sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause;
+        sqlStatement = "SELECT DISTINCT ShowTitle FROM shows " + WhereClause +
+                "ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
 
         ArrayList[] data = database.getFromDatabase(sqlStatement, "showTitle");
 
@@ -73,21 +71,19 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showtitle == "" && showtime == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "" + "WHERE ";
         }
         else if (showtitle == "" && showtime != "") {
-            WhereClause = "WHERE ShowTime = '" + showtime + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowTime = '" + showtime + "'" + "AND ";
         }
         else if (showtitle != "" && showtime == "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ";
         }
         else {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "' AND ShowTime = '" + showtime + "'" + "AND ";
         }
-        sqlStatement = "SELECT DISTINCT ShowDate FROM shows " + WhereClause;
+        sqlStatement = "SELECT DISTINCT ShowDate FROM shows " + WhereClause +
+                "ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
 
         ArrayList[] data = database.getFromDatabase(sqlStatement, "showDate");
         showDate.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
@@ -100,22 +96,20 @@ public class Cinema {
         String sqlStatement = new String();
 
         if(showdate == "" && showtitle == "") {
-            WhereClause = "" + "WHERE ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "" + "WHERE ";
         }
         else if (showdate == "" && showtitle != "") {
-            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowTitle = '" + showtitle + "'" + "AND ";
         }
         else if (showdate != "" && showtitle == "") {
-            WhereClause = "WHERE ShowDate = '" + showdate + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowDate = '" + showdate + "'" + "AND ";
         }
         else {
-            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'" +
-                    "AND ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
+            WhereClause = "WHERE ShowDate = '" + showdate + "' AND ShowTitle = '" + showtitle + "'" + "AND ";
         }
 
-        sqlStatement = "SELECT DISTINCT ShowTime FROM shows " + WhereClause;
+        sqlStatement = "SELECT DISTINCT ShowTime FROM shows " + WhereClause +
+                "ShowDate <= curdate() + INTERVAL DAYOFWEEK(curdate())+14 DAY AND ShowDate > curdate()";
 
         ArrayList[] data = database.getFromDatabase(sqlStatement, "showTime");
         showTime.setAll(data[0]); //0 refers to the first column in the table "shows" which holds titles.
