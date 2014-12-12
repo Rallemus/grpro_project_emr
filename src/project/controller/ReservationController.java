@@ -27,8 +27,8 @@ import java.util.ArrayList;
 public class ReservationController {
 
     private Reservation reservation = new Reservation();
-    //private DatabaseLoad databaseLoad = new DatabaseLoad();
-    //private DatabaseInsert databaseInsert = new DatabaseInsert();
+    private DatabaseLoad databaseLoad = new DatabaseLoad();
+    private DatabaseInsert databaseInsert = new DatabaseInsert();
     private int theater;
     private ObservableList numberOfSeatsSelectedItems = FXCollections.observableArrayList();
     private int numberOfSeatsToSelect = 1;
@@ -132,14 +132,14 @@ public class ReservationController {
             }
         }
 
-        /*
+
         reserveButton.setOnAction((event) -> {
             databaseInsert.newPersonInDatabase(nameField.getText(),phoneField.getText());
             ArrayList nextPersonIDs = databaseLoad.getFromDatabase(
                     "SELECT * FROM person WHERE PhoneNumber=" + phoneField.getText(),"person")[2];
             int nextPersonID = (int) nextPersonIDs.get(nextPersonIDs.size() - 1);
 
-            ArrayList arr = databaseLoad.getFromDatabase("SELECT * FROM reservation","reservations")[0];
+            ArrayList arr = databaseLoad.getFromDatabase("SELECT * FROM reservations","reservations")[0];
             int nextReservationID = (int) arr.get(arr.size()-1) + 1;
 
             for(int i = 0; i < 1 ; i++) {
@@ -147,7 +147,7 @@ public class ReservationController {
             }
             initialize();
         });
-        */
+
         theaterNumber.setText("Sal nr: " + theater);
         freeSeats.setText("Ledige sæder: " + (reservation.getNumberOfSeats()-occupiedSeats.size()));
     }

@@ -37,9 +37,9 @@ public class DatabaseInsert {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
 
-            String sql = "INSERT INTO reservations (ReservationID, PersonID, ShowID, Row, Seat)" +
-                    "VALUES (" + resID + "," + personID + "," + showID + "," + row + "," + seat + ")";
-            stmt.executeQuery(sql);
+            String sql = "INSERT INTO reservations (ReservationID, PersonID, ShowID, Row, Seat) " +
+                    "VALUES (" + resID + "," + personID + "," + showID + "," + row + "," + seat + ");";
+            stmt.executeUpdate(sql);
 
             //STEP 6: Clean-up environment
             stmt.close();
@@ -83,9 +83,9 @@ public class DatabaseInsert {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
 
-            String sql = "INSERT INTO reservations (Name, PhoneNumber)" +
-                    "VALUES (" + name + "," + phone + ")";
-            stmt.executeQuery(sql);
+            String sql = "INSERT INTO person (Name, PhoneNumber) " +
+                    "VALUES (\"" + name + "\",\"" + phone + "\");";
+            stmt.executeUpdate(sql);
 
             //STEP 6: Clean-up environment
             stmt.close();
